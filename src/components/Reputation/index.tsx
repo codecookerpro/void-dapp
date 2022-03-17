@@ -3,6 +3,7 @@ import Web3 from 'web3';
 
 import AddWhiteList from "./AddWhiteList";
 import MultipleMint from "./MutipleMint";
+import TransferOwnership from "./TransferOwnership";
 
 const Reputation = (props: any) => {
 
@@ -18,6 +19,7 @@ const Reputation = (props: any) => {
       <div className="basis-2/4">
         <AddWhiteList web3={web3} />
         <MultipleMint web3={web3} />
+        <TransferOwnership />
       </div>
       <div className="basis-1/4" />
     </div >
