@@ -1,6 +1,6 @@
 ## Bridge Protocol Frontend
 
-This is a [Next.js + TypeScript] project for Bridge protocol.
+This is a [Next.js + TypeScript] project for DeFIRE Reputation.
 
 ## Getting Started
 
