@@ -26,11 +26,11 @@ const NavBar = () => {
         <div className="lg:hidden"></div>
         {
           balance ?
-            <a className="inline-block ml-auto mr-3 py-2 px-6 text-sm text-white font-bold border-2 border-gray-800 transition duration-200 rounded hover:border-rose-600" href="#">
+            <a className="hidden sm:inline-block ml-auto mr-3 py-2 px-6 text-sm text-white font-bold border-2 border-gray-800 transition duration-200 rounded hover:border-rose-600" href="#">
               {balance}
               <span className="text-green-500">  $FLARE</span>
             </a>
-            : <div className="ml-auto"></div>
+            : <div className="hidden sm:inline-block ml-auto"></div>
         }
         <a className="inline-block w-10 mr-2 p-2  bg-black bg-opacity-50 hover:bg-gray-700 rounded" href="https://twitter.com/DeFIRE_ORG" target="_blank">
           <img className="w-8 h-6" src="svg/twitter.svg" alt="" />

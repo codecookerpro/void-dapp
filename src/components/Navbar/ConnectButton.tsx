@@ -100,11 +100,11 @@ const ConnectButton: React.FC<{
   return (
     <div className="flex-none">
       <button
-        className="inline-block ml-auto mr-3 py-2 px-6 text-sm text-white font-bold border-2 border-gray-800 transition duration-200 rounded hover:border-rose-600"
+        className="ml-auto mr-3 py-2 px-6 text-sm text-white font-bold border-2 border-gray-800 transition duration-200 rounded hover:border-rose-600 hidden sm:inline-block"
         onClick={connectWallet}
       >
         {
-          address ? address.slice(0, 10) + '...' : "Connect Metamask"
+          address ? address.slice(0, 10) + '...' : "Connect"
         }
       </button>
     </div>
