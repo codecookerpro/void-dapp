@@ -52,7 +52,7 @@ const ConnectButton: React.FC<{
     }
     try {
       const value = await flareContract.methods.balanceOf(account).call();
-      const bal = web3.utils.fromWei(value, "gwei");
+      const bal = web3.utils.fromWei(value, "ether");
       onBalanceChange(bal);
     } catch (e: any) {
       console.log(e);
