@@ -1,8 +1,8 @@
 {
-  "name": "DeFIRE-Reputation",
+  "name": "DeFIRE-Landing",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "PORT=3006 next dev",
     "build": "yarn typechain & next build",
     "start": "next start",
     "lint": "next lint",

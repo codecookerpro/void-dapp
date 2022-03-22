@@ -7,11 +7,13 @@ const AppLayout: NextPage = ({ children }) => {
     <div className="flex flex-col min-h-screen">
       <Head>
         <title>DeFIRE</title>
-        <meta name="description" content="DeFIRE Reputation page" />
+        <meta name="description" content="DeFIRE landing page" />
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
-      <main className="flex-grow">{children}</main>
-      <Footer />
+      <main className="bg-center bg-no-repeat bg-cover bg-opacity-10" style={{ backgroundRepeat: "no-repeat", backgroundAttachment: "fixed", backgroundImage: "url(/images/back.jpg)" }}>
+        {children}
+        <Footer />
+      </main>
     </div>
   )
 }

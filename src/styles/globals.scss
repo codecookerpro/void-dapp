@@ -26,3 +26,23 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.text-green-600 {
+  --tw-text-opacity: 1;
+  color: rgb(221 7 78/var(--tw-text-opacity))
+}
+
+.bg-green-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(221 7 78/var(--tw-bg-opacity));
+}
+
+.bg-green-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(221 7 78/var(--tw-bg-opacity));
+}
+
+.text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgb(233 4 102/var(--tw-text-opacity));
+}

@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import flareContract from "../Web3/flareContract";
+import web3 from "../Web3";
+import { CHAIN_ID } from "../../config";
 
 const isBrowser = () => typeof window !== "undefined"
 
@@ -23,49 +26,81 @@ async function readAddress() {
 // }
 
 const ConnectButton: React.FC<{
-  onChange: (address: string | undefined) => void;
-}> = ({ onChange }) => {
-  const [address, setAddress] = useState<string | undefined>();
+  onBalanceChange: (bal: string | undefined) => void;
+}> = ({ onBalanceChange }) => {
+
+  const [address, setAddress] = useState<string | undefined>(undefined);
 
   const connectWallet = async () => {
-    const selectedAddress = await readAddress();
-
-    setAddress(selectedAddress);
-    onChange(selectedAddress);
+    if (address) {
+      console.log('Already connected');
+      return;
+    }
+    try {
+      // await changeNetwork(CHAIN_ID);
+      const selectedAddress = await readAddress();
+      setAddress(selectedAddress);
+    } catch (e: any) {
+      console.log(e);
+    }
   };
 
-  useEffect(() => {
-    setAddress(window.ethereum?.selectedAddress);
-  }, []);
+  const getBalance = async (account: String | undefined) => {
+    if (!account || window.ethereum.chainId !== CHAIN_ID) {
+      onBalanceChange(undefined);
+      return;
+    }
+    try {
+      const value = await flareContract.methods.balanceOf(account).call();
+      const bal = web3.utils.fromWei(value, "gwei");
+      onBalanceChange(bal);
+    } catch (e: any) {
+      console.log(e);
+    }
+  }
+
+  const changeNetwork = async (chainId: string) => {
+    return await window.ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: chainId }],
+    });
+  }
 
   useEffect(() => {
-    const eventName = `accountsChanged`;
-
+    console.log('init hook');
     if (!isMetaMaskInstalled()) {
       console.log('Please install metamask first');
       return;
     }
+    // set current address
+    setTimeout(() => setAddress(window.ethereum?.selectedAddress), 100);
 
-    const listener = ([selectedAddress]: string[]) => {
+    const listenerAccountsChanged = ([selectedAddress]: string[]) => {
       setAddress(selectedAddress);
-      onChange(selectedAddress);
+    };
+    const listenerChainChanged = (chainId: string) => {
+      window.location.reload();
     };
 
-    window.ethereum.on(eventName, listener);
+    window.ethereum.on('accountsChanged', listenerAccountsChanged);
+    window.ethereum.on('chainChanged', listenerChainChanged);
 
     return () => {
-      window.ethereum.removeListener(eventName, listener);
+      window.ethereum.removeListener('accountsChanged', listenerAccountsChanged);
+      window.ethereum.removeListener('chainChanged', listenerChainChanged);
     };
-  }, [onChange]);
 
-  // if (!isMetaMaskInstalled()) {
-  //   return <div>No wallet found. Please install MetaMask.</div>;
-  // }
+  }, []);
+
+  useEffect(() => {
+    console.log('address hook');
+    getBalance(address);
+  }, [address]);
 
   return (
     <div className="flex-none">
       <button
-        className="btn btn-sm neutral w-54 normal-case"
+        className="inline-block ml-auto mr-3 py-2 px-6 text-sm text-white font-bold border-2 border-gray-800 transition duration-200 rounded hover:border-rose-600"
         onClick={connectWallet}
       >
         {
