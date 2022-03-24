@@ -22,7 +22,9 @@ const RoadMap = () => {
               <h3 className="mb-1 text-2xl font-bold font-heading text-white">DAO Genesis</h3>
               <p className="mb-4 text-md font-bold font-heading text-white">March 21st 2022</p>
               <div className="py-12 px-6 text-sm bg-black bg-opacity-90 rounded shadow-md text-left">
-                <p className="text-gray-300 leading-loose">Responsibility for the ecosystem's operations is distributed and vested in the DeFIRE community. To make a lasting impact and disrupt existing power structures, we create systems that provide regenerative economic value to their participants.</p>
+                <p className="text-gray-300 leading-loose">
+                  Responsibility for the ecosystem&apos; s operations is distributed and vested in the DeFIRE community. To make a lasting impact and disrupt existing power structures, we create systems that provide regenerative economic value to their participants.
+                </p>
               </div>
             </div>
             <div className="mb-8 w-full lg:w-1/3 px-4 text-center"><span className="mb-4 lg:mb-10 mx-auto flex w-16 h-16 items-center justify-center bg-green-600 rounded-full text-white text-2xl">2</span>

@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 const AboutUs = () => {
   return (
     <div>
@@ -39,7 +41,13 @@ const AboutUs = () => {
                   </ul>
                 </div>
               </div>
-              <div className="w-full lg:w-1/2 px-4 order-0 lg:order-1 mb-8 lg:mb-0"><img src="images/dao.png" alt="" /></div>
+              <div className="w-full lg:w-1/2 px-4 order-0 lg:order-1 mb-8 lg:mb-0">
+                <img
+                  src="/images/dao.png"
+                  alt=""
+                // layout="fill"
+                />
+              </div>
             </div>
           </div>
         </div>
