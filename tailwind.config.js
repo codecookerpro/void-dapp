@@ -1,4 +1,3 @@
-
 module.exports = {
   content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
@@ -9,13 +8,50 @@ module.exports = {
         'gold': '#b3881e',
         'yellow': '#ffbb12',
         'blue-light': '#2b48ff',
-        'blue-dark': '#172058'
+        'blue-dark': '#172058',
+        'black-haze': '#f7f7f7',
+        'blue-charcoal': '#040519',
+        'blueberry': '#5978ed',
+        'ebb': '#e3e3e380',
+        'froly': '#f26d81',
+        'green-blue': '#1f78b4',
+        'regent-gray': '#858eab',
+        'victoria': '#554886',
+        'violet-blue': '#354dab',
+        'white': '#ffffff',
+        'wild-sand': '#f4f4f4',
+        'x04051a': '#04051a',
+
+      },
+      screens: {
+        'sm': '300px',
+        'md': '700px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px'
+        },
+      fontFamily: {
+        'arial-regular': ['Arial-Regular','Helvetica'],
+        'avenirnext-bold': ['AvenirNext-Bold','Helvetica'],
+        'avenirnext-demibold': ['AvenirNext-DemiBold','Helvetica'],
+        'avenirnext-medium': ['AvenirNext-Medium','Helvetica'],
+        'nunito_sans': ['Nunito Sans','Helvetica'],
+        'poppins': ['Poppins','Helvetica'],
+       },
+      fontSize: {
+        fsl:['16px', '16px'],
+        fsm:['14px', '14px'],
+        xl:['20px', '20px'],
+        xxl:['22px', '22px'],
+        xxxl:['24px', '24px'],
+        xxxxl:['26px', '26px'],
+        xxxxxl:['32px', '32px'],
       },
     },
   },
   plugins: [
     require('daisyui'),
-    require('tailwind-scrollbar')
+    require('tailwind-scrollbar'),
   ],
   variants: {
     scrollbar: ['rounded']

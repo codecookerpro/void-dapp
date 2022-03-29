@@ -1,6 +1,6 @@
-export const FLARE_ADDRESS = '0x4E547E37deF32A1307f2106eC3B9068E9c4312AB'
+export const VOID_ADDRESS = '0x4E547E37deF32A1307f2106eC3B9068E9c4312AB'
 
-export const FLARE_ABI = [
+export const VOID_ABI = [
   { inputs: [], stateMutability: 'nonpayable', type: 'constructor' },
   {
     anonymous: false,
