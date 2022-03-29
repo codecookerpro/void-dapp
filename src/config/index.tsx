@@ -1,1 +1,1 @@
-export const CHAIN_ID = '0x89';
+export const CHAIN_ID = '0x89'; //137
