@@ -4,14 +4,13 @@ import DashBoard from '../components/DashBoard';
 
 const Home = () => {
   return (
-    <div className='flex flex-row justify-center w-full'>
-      <div className='w-[1920px] shrink-0 items-start bg-white overflow-hidden contents'>
+    <div className='flex flex-row justify-center w-full  overflow-hidden shrink-0 items-start bg-white'>
         <SideBar />
         <DashBoard />
         <RNavBar />
-      </div>
     </div>
   )
 }
 
 export default Home;
+
