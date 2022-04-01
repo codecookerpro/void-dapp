@@ -46,16 +46,16 @@ const ConnectButton = ({ actionText, onBalanceChange }: ButtonProps) => {
   };
 
   const getBalance = async (account: String | undefined) => {
-    console.log("invoke getBalance");
+
     if (!account || window.ethereum.chainId !== CHAIN_ID) {
       onBalanceChange(undefined);
       return;
     }
     try {
       const value = await voidContract.methods.balanceOf(account).call();
-      console.log("value", value);
       const bal = web3.utils.fromWei(value, "ether");
-      console.log("connectButton", bal);
+      console.log("value", value);
+      console.log("bal", bal);
       onBalanceChange(bal);
     } catch (e: any) {
       console.log(e);

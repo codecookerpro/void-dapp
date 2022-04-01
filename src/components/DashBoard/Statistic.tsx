@@ -38,16 +38,16 @@ function Statistic() {
             <div className="flex flex-1 items-end mb-[21px] ml-[30px] mr-[36.5px] min-w-[calc(100.00% -122px)]">
               <ChartBar caption={'Jan'} upheight={102} downheight={41} />
               <ChartBar caption={'Feb'} upheight={102} downheight={19} />
-              <ChartBar caption={'Mar'} upheight={107} downheight={37} />
+              <ChartBar caption={'Mar'} upheight={102} downheight={37} />
               <ChartBar caption={'Apr'} upheight={102} downheight={12} />
               <ChartBar caption={'Mai'} upheight={102} downheight={37} />
-              <ChartBar caption={'Jun'} upheight={113} downheight={37} />
-              <ChartBar caption={'Jul'} upheight={107} downheight={37} />
-              <ChartBar caption={'Aug'} upheight={113} downheight={37} />
-              <ChartBar caption={'Sep'} upheight={107} downheight={37} />
-              <ChartBar caption={'Oct'} upheight={113} downheight={37} />
-              <ChartBar caption={'Nov'} upheight={113} downheight={37} />
-              <ChartBar caption={'Dec'} upheight={107} downheight={24} />
+              <ChartBar caption={'Jun'} upheight={102} downheight={37} />
+              <ChartBar caption={'Jul'} upheight={102} downheight={37} />
+              <ChartBar caption={'Aug'} upheight={102} downheight={37} />
+              <ChartBar caption={'Sep'} upheight={102} downheight={37} />
+              <ChartBar caption={'Oct'} upheight={102} downheight={37} />
+              <ChartBar caption={'Nov'} upheight={102} downheight={37} />
+              <ChartBar caption={'Dec'} upheight={102} downheight={24} />
             </div>
           </div>
         </div>

@@ -53,6 +53,13 @@ module.exports = {
     require('daisyui'),
     require('tailwind-scrollbar'),
   ],
+  purge: {
+  
+    options: {
+      // List your classes here, or you can even use RegExp
+      safelist: [/^h-/],
+    },
+  },
   variants: {
     scrollbar: ['rounded']
   },

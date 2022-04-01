@@ -21,6 +21,7 @@ const RNavBar = () => {
 
   useEffect(() => {
     console.log("balance", balance);
+    setBalance(balance);
   }, [balance])
 
   return (
@@ -34,10 +35,10 @@ const RNavBar = () => {
                 <ConnectButton actionText="Connect Wallet" onBalanceChange={() => handleBalanceChange} />
               </div>
               <div className="-mt-[40px] ml-[11px] w-[108px] h-[58px]">
-                <ClaimButton actionText="Claim" onBalanceChange={() => claim()} />
+                <ClaimButton actionText="Claim" onClaim={() => claim()} />
               </div>
             </div>
-            <MyWallet />
+            <MyWallet balance = {balance}/>
             <Nft />
             <div className="flex flex-col -ml-[70px] mt-[30px] w-[488px] h-[263px] bg-[url('/img/pfad-6@1x.png')] bg-cover">
               <div className="ml-[85px] font-poppins font-semibold text-x04051a text-xxxl">Total Rewards in $DAI</div>
