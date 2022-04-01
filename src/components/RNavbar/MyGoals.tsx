@@ -25,7 +25,7 @@ const MyGoals = () => {
                 <div className="relative -ml-[0.6px] mt-[1px] w-[16px] h-[4px]">
                   <img className="absolute left-[3px] top-0 object-cover h-[4px] w-[4px]" src="/img/vector-8@1x.png" />
                   <img className="absolute left-[6px] top-[2px] object-cover h-[1px] w-[10px]" src="/img/vector-9@1x.png" />
-                  <img className="absolute left-0 tip-[2px] object-cover w-[4px] h-[1px]" src="/img/vector-10@1x.png" />
+                  <img className="absolute left-0 top-[2px] object-cover w-[4px] h-[1px]" src="/img/vector-10@1x.png" />
                 </div>
                 <div className="relative -ml-[0.6px] mt-[1px] w-[16px] h-[4px]">
                   <img className="absolute left-[9px] top-0 object-cover w-[4px] h-[4px]" src="/img/vector-11@1x.png" />

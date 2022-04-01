@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import voidContract from "../Web3/voidContract";
-import dividenContract from "../Web3/dividenContract";
 import web3 from "../Web3";
 import { AbiItem } from 'web3-utils'
 import { DIVIDEN_ABI, CHAIN_ID } from "../../config";
@@ -11,8 +10,6 @@ interface ButtonProps {
   onClaim: (bal: string | undefined) => void,
 }
 
-console.log(dividenContract);
-
 async function readAddress() {
   const method = "eth_requestAccounts";
 
@@ -22,9 +19,6 @@ async function readAddress() {
 
   return accounts[0];
 }
-
-
-
 
 const ClaimButton = ({ actionText, onClaim }: ButtonProps) => {
 
@@ -47,8 +41,8 @@ const ClaimButton = ({ actionText, onClaim }: ButtonProps) => {
       return;
     }
     try {
-      // const dividenDistributor = await voidContract.methods.distributorAddress.call().call();
-      // const dividenContract = new web3.eth.Contract(DIVIDEN_ABI as AbiItem[], dividenDistributor);
+      const dividenDistributor = await voidContract.methods.distributorAddress.call().call();
+      const dividenContract = new web3.eth.Contract(DIVIDEN_ABI as AbiItem[], dividenDistributor);
       const claimed = await dividenContract.methods.claimDividend().send({from: account});
       console.log("claimed", claimed);
     } catch (e: any) {
