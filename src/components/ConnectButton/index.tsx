@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import voidContract from "../Web3/voidContract";
 import web3 from "../Web3";
 import { CHAIN_ID } from "../../config";
-import { formatWalletAddress } from "../../utils"
+import { formatWalletAddress, readAddress } from "../../utils"
 
 interface ButtonProps {
   actionText: string,
@@ -16,17 +16,6 @@ function isMetaMaskInstalled() {
     return Boolean(window.ethereum);
   return false;
 }
-
-async function readAddress() {
-  const method = "eth_requestAccounts";
-
-  const accounts = await window.ethereum.request<string[]>({
-    method
-  });
-
-  return accounts[0];
-}
-
 
 const ConnectButton = ({ actionText, onBalanceChange }: ButtonProps) => {
   const [address, setAddress] = useState<string | undefined>(undefined);

@@ -1,4 +1,12 @@
-function Reward() {
+interface rewardProps {
+    totalReward:String | undefined,
+    claimableReward:String | undefined,
+    totalDistributed: String | undefined,
+}
+function Reward(props: rewardProps) {
+  console.log(props.totalReward);
+  console.log(props.claimableReward);
+  console.log(props.totalDistributed);
   return (
     <div className="flex flex-col items-start bg-black-haze rounded-[10px] ml-[0.5px] mt-[18px] min-h-[309px] w-full py-[27.5px] px-4">
       <div className="tracking-normal whitespace-nowrap min-h-[35px] ml-6 font-poppins font-semibold text-x04051a text-xxxl">Reward in DAI</div>

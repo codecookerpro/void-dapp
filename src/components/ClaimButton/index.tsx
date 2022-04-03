@@ -3,21 +3,11 @@ import voidContract from "../Web3/voidContract";
 import web3 from "../Web3";
 import { AbiItem } from 'web3-utils'
 import { DIVIDEN_ABI, CHAIN_ID } from "../../config";
-import { formatWalletAddress } from "../../utils"
+import { formatWalletAddress, readAddress } from "../../utils"
 
 interface ButtonProps {
   actionText: string,
   onClaim: (bal: string | undefined) => void,
-}
-
-async function readAddress() {
-  const method = "eth_requestAccounts";
-
-  const accounts = await window.ethereum.request<string[]>({
-    method
-  });
-
-  return accounts[0];
 }
 
 const ClaimButton = ({ actionText, onClaim }: ButtonProps) => {
