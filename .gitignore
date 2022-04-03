@@ -52,7 +52,7 @@ firebase-debug.log*
 firebase-debug.*.log*
 
 # build
-public/
+# public/
 
 # Firebase cache
 .firebase/
