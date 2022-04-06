@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import voidContract from "../Web3/voidContract";
 import web3 from "../Web3";
-import { AbiItem } from 'web3-utils'
-import { DIVIDEN_ABI, CHAIN_ID } from "../../config";
+import { CHAIN_ID } from "../../config";
 import { formatWalletAddress, readAddress, isMetaMaskInstalled } from "../../utils"
 
 import {useAddress} from '../AddressProvider';
@@ -13,7 +12,6 @@ interface ButtonProps {
 }
 
 const ConnectButton = ({ actionText, onBalanceChange }: ButtonProps) => {
-  // const [address, setAddress] = useState<string | undefined>(undefined);
   const {address, updateAddress} = useAddress();
   const connectWallet = async () => {
     if (address) {
@@ -39,11 +37,6 @@ const ConnectButton = ({ actionText, onBalanceChange }: ButtonProps) => {
       const value = await voidContract.methods.balanceOf(account).call();
       const bal = web3.utils.fromWei(value, "ether");
       onBalanceChange(bal);
-      const dividenDistributor = await voidContract.methods.distributorAddress.call().call();
-      const dividenContract = new web3.eth.Contract(DIVIDEN_ABI as AbiItem[], dividenDistributor);
-      const myclaimableReward = await dividenContract.methods.getUnpaidEarnings(account).call();
-      // setClaimableRewrd(myclaimableReward);
-      console.log("claimableReward", myclaimableReward);
     } catch (e: any) {
       console.log(e);
     }
