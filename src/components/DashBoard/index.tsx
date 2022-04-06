@@ -7,7 +7,6 @@ import { DIVIDEN_ABI, CHAIN_ID } from "../../config";
 import TransactionHistory from './TransactionHistory'
 import Statistic from './Statistic'
 import Reward from './Reward'
-import { readAddress } from '../../utils/web3Utils';
 
 import {useAddress} from '../AddressProvider';
 
@@ -27,7 +26,6 @@ const DashBoard = () => {
     const totalRewardDistributend = await dividenContract.methods.totalDistributed.call().call();
     setTotalDistributed(totalRewardDistributend);
 
-    console.log("---->", address)
     const myclaimableReward = await dividenContract.methods.getUnpaidEarnings(address).call();
     setClaimableRewrd(myclaimableReward);
     console.log("claimableReward", myclaimableReward);
