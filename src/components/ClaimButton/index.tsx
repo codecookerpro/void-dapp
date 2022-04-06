@@ -12,12 +12,9 @@ interface ButtonProps {
 
 const ClaimButton = ({ actionText, onClaim }: ButtonProps) => {
 
-  const [address, setAddress] = useState<string | undefined>(undefined);
-
   const claim = async () => {
     try {
       const selectedAddress = await readAddress();
-      setAddress(selectedAddress);
       claimDividend(selectedAddress);
     } catch (e: any) {
       console.log(e);
@@ -25,7 +22,6 @@ const ClaimButton = ({ actionText, onClaim }: ButtonProps) => {
   }
 
   const claimDividend = async (account: string ) => {
-
     if (window.ethereum.chainId !== CHAIN_ID) {
       onClaim(undefined);
       return;

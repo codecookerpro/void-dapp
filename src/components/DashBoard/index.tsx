@@ -9,11 +9,14 @@ import Statistic from './Statistic'
 import Reward from './Reward'
 import { readAddress } from '../../utils/web3Utils';
 
+import {useAddress} from '../AddressProvider';
+
 const data = {
   title: "Dashboard",
 }
 
 const DashBoard = () => {
+  const {address} = useAddress();
   const [totalDistributed, setTotalDistributed] = useState<String | undefined>(undefined)
   const [claimableReward, setClaimableRewrd] = useState<String | undefined>(undefined)
   const [totalReward, setTotalReward] = useState<String | undefined>(undefined)
@@ -23,8 +26,9 @@ const DashBoard = () => {
     const dividenContract = new web3.eth.Contract(DIVIDEN_ABI as AbiItem[], dividenDistributor);
     const totalRewardDistributend = await dividenContract.methods.totalDistributed.call().call();
     setTotalDistributed(totalRewardDistributend);
-    const account = await readAddress();
-    const myclaimableReward = await dividenContract.methods.getUnpaidEarnings(account).call();
+
+    console.log("---->", address)
+    const myclaimableReward = await dividenContract.methods.getUnpaidEarnings(address).call();
     setClaimableRewrd(myclaimableReward);
     console.log("claimableReward", myclaimableReward);
     console.log("totalRewardDistributend", totalRewardDistributend);
@@ -33,12 +37,7 @@ const DashBoard = () => {
 
   useEffect(()=> {
     init();
-  },[]);
-
-  
-  useEffect(() => {
-
-  })
+  },[address]);
 
   return (
     <div className="items-start flex flex-col ml-[28px] mt-[73.5px] min-h-[1161px] grow">

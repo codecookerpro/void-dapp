@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from "react";
 import voidContract from "../Web3/voidContract";
 import web3 from "../Web3";
-import { CHAIN_ID } from "../../config";
-import { formatWalletAddress, readAddress } from "../../utils"
+import { AbiItem } from 'web3-utils'
+import { DIVIDEN_ABI, CHAIN_ID } from "../../config";
+import { formatWalletAddress, readAddress, isMetaMaskInstalled } from "../../utils"
+
+import {useAddress} from '../AddressProvider';
 
 interface ButtonProps {
   actionText: string,
   onBalanceChange: (bal: string | undefined) => void,
 }
 
-const isBrowser = () => typeof window !== "undefined"
-
-function isMetaMaskInstalled() {
-  if (isBrowser())
-    return Boolean(window.ethereum);
-  return false;
-}
-
 const ConnectButton = ({ actionText, onBalanceChange }: ButtonProps) => {
-  const [address, setAddress] = useState<string | undefined>(undefined);
-
+  // const [address, setAddress] = useState<string | undefined>(undefined);
+  const {address, updateAddress} = useAddress();
   const connectWallet = async () => {
     if (address) {
       console.log('Already connected');
@@ -28,7 +23,7 @@ const ConnectButton = ({ actionText, onBalanceChange }: ButtonProps) => {
     try {
       // await changeNetwork(CHAIN_ID);
       const selectedAddress = await readAddress();
-      setAddress(selectedAddress);
+      updateAddress(selectedAddress);
     } catch (e: any) {
       console.log(e);
     }
@@ -43,9 +38,12 @@ const ConnectButton = ({ actionText, onBalanceChange }: ButtonProps) => {
     try {
       const value = await voidContract.methods.balanceOf(account).call();
       const bal = web3.utils.fromWei(value, "ether");
-      console.log("value", value);
-      console.log("bal", bal);
       onBalanceChange(bal);
+      const dividenDistributor = await voidContract.methods.distributorAddress.call().call();
+      const dividenContract = new web3.eth.Contract(DIVIDEN_ABI as AbiItem[], dividenDistributor);
+      const myclaimableReward = await dividenContract.methods.getUnpaidEarnings(account).call();
+      // setClaimableRewrd(myclaimableReward);
+      console.log("claimableReward", myclaimableReward);
     } catch (e: any) {
       console.log(e);
     }
@@ -59,16 +57,15 @@ const ConnectButton = ({ actionText, onBalanceChange }: ButtonProps) => {
   }
 
   useEffect(() => {
-    console.log('init hook');
     if (!isMetaMaskInstalled()) {
       console.log('Please install metamask first');
       return;
     }
     // set current address
-    setTimeout(() => setAddress(window.ethereum?.selectedAddress), 100);
+    setTimeout(() => updateAddress(window.ethereum?.selectedAddress as string), 100);
 
     const listenerAccountsChanged = ([selectedAddress]: string[]) => {
-      setAddress(selectedAddress);
+      updateAddress(selectedAddress);
     };
     const listenerChainChanged = (chainId: string) => {
       window.location.reload();

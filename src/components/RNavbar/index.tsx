@@ -8,9 +8,9 @@ import MyGoals from './MyGoals';
 
 const RNavBar = () => {
 
-  const claim = () => {
-    console.log("claim click")
-  }
+  const handleOnClaim = useCallback(() => {
+    console.log("handleOnClaim")
+  },[])
 
   const [active, setActive] = useState(false)
   const [balance, setBalance] = useState<String | undefined>(undefined)
@@ -32,10 +32,10 @@ const RNavBar = () => {
           <div className="flex flex-col mt-[90px] ml-[31px] items-start min-h-[648px] w-[338px]">
             <div className="flex items-start w-[338px]">
               <div className="-mt-[40px] w-[219px] h-[58px]" >
-                <ConnectButton actionText="Connect Wallet" onBalanceChange={() => handleBalanceChange} />
+                <ConnectButton actionText="Connect Wallet" onBalanceChange={handleBalanceChange} />
               </div>
               <div className="-mt-[40px] ml-[11px] w-[108px] h-[58px]">
-                <ClaimButton actionText="Claim" onClaim={() => claim()} />
+                <ClaimButton actionText="Claim" onClaim={handleOnClaim} />
               </div>
             </div>
             <MyWallet balance = {balance}/>

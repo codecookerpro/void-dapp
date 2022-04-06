@@ -1,8 +1,10 @@
+import {formatToCurrency} from "../../utils"
+
 interface myWalletProps {
   balance: String | undefined,
 }
 const MyWallet = (Props: myWalletProps) => {
-  console.log("walletBalance", Props.balance);
+  
   return (
     <div className="flex flex-col mt-14 min-h-[251px] items-start w-[338px]">
       <div className="font-poppins text-xxxl font-bold tracking-normal text-wallet mt-1 ml-3.5 min-h-[35px] whitespace-nowrap">My Wallet</div>
@@ -25,7 +27,7 @@ const MyWallet = (Props: myWalletProps) => {
           <div className="flex flex-col flex-1 w-full mt-[15px] bg-[url('/img/blur-rectangle-1@1x.png')] bg-cover h-[83px]">
             <div className="-ml-[152px] mt-[20px] tracking-normal whitespace-nowrap text-center font-medium text-wild-sand text-fsm font-avenirnext-medium">Balance in Void Token</div>
             <div className='flex flex-row justify-between items-center mt-[10px]'>
-              <div className="ml-[22px] tracking-normal whitespace-nowrap font-bold text-xxl text-white font-avenirnext-bold">${Props.balance}</div>
+              <div className="ml-[22px] tracking-normal whitespace-nowrap font-bold text-xxl text-white font-avenirnext-bold">{formatToCurrency(Number(Props.balance))}</div>
               <div className="mr-[5px] tracking-normal text-center text-fsl font-medium whitespace-nowrap font-avenirnext-medium text-wild-sand">BALANCE</div>
             </div>
           </div>

@@ -8,3 +8,11 @@ export async function readAddress() {
     return accounts[0];
   }
   
+  const isBrowser = () => typeof window !== "undefined"
+
+  export function isMetaMaskInstalled() {
+    if (isBrowser())
+      return Boolean(window.ethereum);
+    return false;
+  }
+  
