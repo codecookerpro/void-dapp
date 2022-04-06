@@ -36,7 +36,9 @@ const DashBoard = () => {
 
 
   useEffect(()=> {
-    init();
+    if(address) {
+      init();
+    }
   },[address]);
 
   return (
