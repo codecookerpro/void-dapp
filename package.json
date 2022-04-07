@@ -1,5 +1,5 @@
 {
-  "name": "Void-FrontEnd",
+  "name": "Void-Dapp",
   "private": true,
   "scripts": {
     "dev": "next dev",
